@@ -844,6 +844,8 @@ class InfoExtractor:
             headers.setdefault('X-Forwarded-For', self._x_forwarded_for_ip)
 
         try:
+            sleep_time = random.uniform(1, 5)
+            time.sleep(sleep_time)
             return self._downloader.urlopen(self._create_request(url_or_request, data, headers, query))
         except network_exceptions as err:
             if isinstance(err, HTTPError):
